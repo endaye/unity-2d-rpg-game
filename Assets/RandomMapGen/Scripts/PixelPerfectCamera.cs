@@ -1,27 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-public class PixelPerfectCamera : MonoBehaviour
-{
-    public static float pixelToUnits = 1f;
-    public static float scale = 1f;
+public class PixelPerfectCamera : MonoBehaviour {
 
-    public Vector2 nativeResolution = new Vector2(160, 144);
+	public static float pixelToUnits = 1f;
+	public static float scale = 1f;
 
-    void Awake()
-    {
-        var camera = GetComponent<Camera>();
+	public Vector2 nativeResolution = new Vector2 (160, 144);
 
-        if (camera.orthographic)
-        {
-            var dir = Screen.height;
-            var res = nativeResolution.y;
+	void Awake(){
 
-            scale = dir / res;
-            pixelToUnits *= scale;
+		var camera = GetComponent<Camera> ();
 
-            camera.orthographicSize = (dir / 2.0f) / pixelToUnits;
-        }
-    }
+		if (camera.orthographic) {
+
+			var dir = Screen.height;
+			var res = nativeResolution.y;
+
+			scale = dir / res;
+			pixelToUnits *= scale;
+
+			camera.orthographicSize = (dir / 2.0f) / pixelToUnits;
+
+		}
+
+	}
 }

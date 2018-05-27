@@ -1,116 +1,116 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-public class RandomMapTester : MonoBehaviour
-{
-    [Header("Map Dimensions")]
-    public int mapWidth = 20;
-    public int mapHeight = 20;
+public class RandomMapTester : MonoBehaviour {
 
-    [Space]
-    [Header("Vizualize Map")]
-    public GameObject mapContainer;
-    public GameObject tilePrefab;
-    public Vector2 tileSize = new Vector2();
+	[Header("Map Dimensions")]
+	public int mapWidth = 20;
+	public int mapHeight = 20;
 
-    [Space]
-    [Header("Map Sprites")]
-    public Texture2D islandTexture;
+	[Space]
+	[Header("Vizualize Map")]
+	public GameObject mapContainer;
+	public GameObject tilePrefab;
+	public Vector2 tileSize = new Vector2(16,16);
 
-    [Space]
-    [Header("Decorate Map")]
-    [Range(0, .9f)]
-    public float erodePercent = .5f;
-    public int erodeIterations = 2;
-    [Range(0, .9f)]
-    public float treePercent = .3f;
-    [Range(0, .9f)]
-    public float hillPercent = .2f;
-    [Range(0, .9f)]
-    public float mountainPercent = .1f;
-    [Range(0, .9f)]
-    public float townPercent = .05f;
-    [Range(0, .9f)]
-    public float monsterPercent = .1f;
-    [Range(0, .9f)]
-    public float lakePercent = .05f;
+	[Space]
+	[Header("Map Sprites")]
+	public Texture2D islandTexture;
 
-    public Map map;
+	[Space]
+	[Header("Decorate Map")]
+	[Range(0, .9f)]
+	public float erodePercent = .5f;
+	public int erodeIterations = 2;
+	[Range(0, .9f)]
+	public float treePercent = .3f;
+	[Range(0, .9f)]
+	public float hillPercent = .2f;
+	[Range(0, .9f)]
+	public float mountainsPercent = .1f;
+	[Range(0, .9f)]
+	public float townPercent = .05f;
+	[Range(0, .9f)]
+	public float monsterPercent = .1f;
+	[Range(0, .9f)]
+	public float lakePercent = .05f;
 
-    // Use this for initialization
-    void Start()
-    {
-        map = new Map();
-    }
+	public Map map;
 
-    public void MakeMap()
-    {
-        map.NewMap(mapWidth, mapHeight);
-        map.CreateIsland(
-            erodePercent,
-            erodeIterations,
-            treePercent,
-            hillPercent,
-            mountainPercent,
-            townPercent,
-            monsterPercent,
-            lakePercent
-            );
-        CreateGrid();
-        CenterMap(map.castleTile.id);
-    }
+	// Use this for initialization
+	void Start () {
+		map = new Map ();
+	}
+	
+	public void MakeMap(){
+		map.NewMap (mapWidth, mapHeight);
+		map.CreateIsland (
+			erodePercent,
+			erodeIterations,
+			treePercent,
+			hillPercent,
+			mountainsPercent,
+			townPercent,
+			monsterPercent,
+			lakePercent
+		);
+		CreateGrid ();
+		CenterMap (map.castleTile.id);
+	}
 
-    void CreateGrid()
-    {
-        ClearMapContainer();
-        Sprite[] sprites = Resources.LoadAll<Sprite>(islandTexture.name);
+	void CreateGrid(){
+		ClearMapContainer ();
+		Sprite[] sprites = Resources.LoadAll<Sprite> (islandTexture.name);
 
-        var total = map.tiles.Length;
-        var maxColumns = map.columns;
-        var column = 0;
-        var row = 0;
+		var total = map.tiles.Length;
+		var maxColumns = map.columns;
+		var column = 0;
+		var row = 0;
 
-        for (var i = 0; i < total; i++)
-        {
-            column = i % maxColumns;
+		for (var i = 0; i < total; i++) {
 
-            var newX = column * tileSize.x;
-            var newY = -row * tileSize.y;
+			column = i % maxColumns;
 
-            var go = Instantiate(tilePrefab);
-            go.name = "Tile " + i;
-            go.transform.SetParent(mapContainer.transform);
-            go.transform.position = new Vector3(newX, newY, 0f);
+			var newX = column * tileSize.x;
+			var newY = -row * tileSize.y;
 
-            var tile = map.tiles[i];
-            var spriteID = tile.autotileID;
+			var go = Instantiate (tilePrefab);
+			go.name = "Tile " + i;
+			go.transform.SetParent (mapContainer.transform);
+			go.transform.position = new Vector3 (newX, newY, 0);
 
-            if (spriteID >= 0)
-            {
-                var sr = go.GetComponent<SpriteRenderer>();
-                sr.sprite = sprites[spriteID];
-            }
+			var tile = map.tiles [i];
+			var spriteID = tile.autotileID;
 
-            if (column == maxColumns - 1) row++;
-        }
-    }
+			if (spriteID >= 0) {
+				var sr = go.GetComponent<SpriteRenderer> ();
+				sr.sprite = sprites [spriteID];
+			}
 
-    void ClearMapContainer()
-    {
-        var children = mapContainer.transform.GetComponentsInChildren<Transform>();
-        for (var i = children.Length - 1; i > 0; i--)
-        {
-            Destroy(children[i].gameObject);
-        }
-    }
+			if (column == (maxColumns - 1)) {
+				row++;
+			}
 
-    void CenterMap(int index)
-    {
-        var camPos = Camera.main.transform.position;
-        var width = map.columns;
-        camPos.x = (index % width) * tileSize.x;
-        camPos.y = -((index / width) * tileSize.y);
-        Camera.main.transform.position = camPos;
-    }
+		}
+
+	}
+
+	void ClearMapContainer(){
+
+		var children = mapContainer.transform.GetComponentsInChildren<Transform> ();
+		for (var i = children.Length - 1; i > 0; i--) {
+			Destroy (children [i].gameObject);
+		}
+
+	}
+
+	void CenterMap(int index){
+
+		var camPos = Camera.main.transform.position;
+		var width = map.columns;
+		camPos.x = (index % width) * tileSize.x;
+		camPos.y = -((index / width) * tileSize.y);
+		Camera.main.transform.position = camPos;
+
+	}
 }
