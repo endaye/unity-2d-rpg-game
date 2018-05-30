@@ -1,33 +1,42 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class MoveCamera : MonoBehaviour {
+public class MoveCamera : MonoBehaviour
+{
+    public float speed = 4f;
+    public GameObject target;
 
-	public float speed = 4f;
+    private Vector3 startPos;
+    private bool moving;
 
-	private Vector3 startPos;
-	private bool moving;
+    void FixedUpdate()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            startPos = Input.mousePosition;
+            moving = true;
+        }
 
-	void FixedUpdate(){
+        if (Input.GetMouseButtonUp(1) && moving)
+        {
+            moving = false;
+        }
 
-		if (Input.GetMouseButtonDown (1)) {
-			startPos = Input.mousePosition;
-			moving = true;
-		}
+        if (moving)
+        {
+            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - startPos);
+            Vector3 move = new Vector3(pos.x * speed, pos.y * speed, 0f);
+            transform.Translate(move, Space.Self);
+        }
+        else if (target != null)
+        {
+            var pos = target.transform.position;
+            pos.z = Camera.main.transform.position.z;
 
-		if (Input.GetMouseButtonUp (1) && moving) {
-			moving = false;
-		}
-
-		if (moving) {
-
-			Vector3 pos = Camera.main.ScreenToViewportPoint (Input.mousePosition - startPos);
-			Vector3 move = new Vector3 (pos.x * speed, pos.y * speed, 0);
-			transform.Translate (move, Space.Self);
-
-		}
-
-	}
+            Camera.main.transform.position = pos;
+        }
+    }
 
 
 }
