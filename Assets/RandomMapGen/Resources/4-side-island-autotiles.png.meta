@@ -26,17 +26,14 @@ TextureImporter:
     21300038: 4-side-island-autotiles_19
     21300040: 4-side-island-autotiles_20
     21300042: 4-side-island-autotiles_21
-  externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 2
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    sRGBTexture: 1
     linearTexture: 0
+    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
-    mipMapsPreserveCoverage: 0
-    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -46,22 +43,23 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 6
+  generateCubemap: 0
   cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
-    serializedVersion: 2
     filterMode: 0
     aniso: 16
     mipBias: -1
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -69,30 +67,12 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 1
-  alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
   textureType: 8
-  textureShape: 1
-  maxTextureSizeSet: 0
-  compressionQualitySet: 0
-  textureFormatSet: 0
-  platformSettings:
-  - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
+  buildTargetSettings: []
   spriteSheet:
-    serializedVersion: 2
     sprites:
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_0
+    - name: 4-side-island-autotiles_0
       rect:
         serializedVersion: 2
         x: 2
@@ -103,10 +83,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_1
+    - name: 4-side-island-autotiles_1
       rect:
         serializedVersion: 2
         x: 20
@@ -117,10 +94,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_2
+    - name: 4-side-island-autotiles_2
       rect:
         serializedVersion: 2
         x: 38
@@ -131,10 +105,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_3
+    - name: 4-side-island-autotiles_3
       rect:
         serializedVersion: 2
         x: 56
@@ -145,10 +116,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_4
+    - name: 4-side-island-autotiles_4
       rect:
         serializedVersion: 2
         x: 74
@@ -159,10 +127,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_5
+    - name: 4-side-island-autotiles_5
       rect:
         serializedVersion: 2
         x: 92
@@ -173,10 +138,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_6
+    - name: 4-side-island-autotiles_6
       rect:
         serializedVersion: 2
         x: 110
@@ -187,10 +149,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_7
+    - name: 4-side-island-autotiles_7
       rect:
         serializedVersion: 2
         x: 128
@@ -201,10 +160,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_8
+    - name: 4-side-island-autotiles_8
       rect:
         serializedVersion: 2
         x: 146
@@ -215,10 +171,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_9
+    - name: 4-side-island-autotiles_9
       rect:
         serializedVersion: 2
         x: 164
@@ -229,10 +182,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_10
+    - name: 4-side-island-autotiles_10
       rect:
         serializedVersion: 2
         x: 182
@@ -243,10 +193,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_11
+    - name: 4-side-island-autotiles_11
       rect:
         serializedVersion: 2
         x: 200
@@ -257,10 +204,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_12
+    - name: 4-side-island-autotiles_12
       rect:
         serializedVersion: 2
         x: 218
@@ -271,10 +215,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_13
+    - name: 4-side-island-autotiles_13
       rect:
         serializedVersion: 2
         x: 236
@@ -285,10 +226,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_14
+    - name: 4-side-island-autotiles_14
       rect:
         serializedVersion: 2
         x: 254
@@ -299,10 +237,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_15
+    - name: 4-side-island-autotiles_15
       rect:
         serializedVersion: 2
         x: 272
@@ -313,10 +248,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_16
+    - name: 4-side-island-autotiles_16
       rect:
         serializedVersion: 2
         x: 290
@@ -327,10 +259,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_17
+    - name: 4-side-island-autotiles_17
       rect:
         serializedVersion: 2
         x: 308
@@ -341,10 +270,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_18
+    - name: 4-side-island-autotiles_18
       rect:
         serializedVersion: 2
         x: 326
@@ -355,10 +281,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_19
+    - name: 4-side-island-autotiles_19
       rect:
         serializedVersion: 2
         x: 344
@@ -369,10 +292,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_20
+    - name: 4-side-island-autotiles_20
       rect:
         serializedVersion: 2
         x: 362
@@ -383,10 +303,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: 4-side-island-autotiles_21
+    - name: 4-side-island-autotiles_21
       rect:
         serializedVersion: 2
         x: 380
@@ -397,10 +314,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
     outline: []
-    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

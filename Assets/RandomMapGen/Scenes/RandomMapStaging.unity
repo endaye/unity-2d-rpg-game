@@ -146,10 +146,10 @@ MonoBehaviour:
   tilePrefab: {fileID: 130468, guid: b7e373b522b554b2b9c21b7229a91eee, type: 2}
   tileSize: {x: 16, y: 16}
   islandTexture: {fileID: 2800000, guid: 6dda2095192964815b349ac505a5e664, type: 3}
-  fowTexture: {fileID: 2800000, guid: 432bf47ce3ec9c4478b98a07913e3968, type: 3}
-  playerPrefab: {fileID: 1093025344972184, guid: c523a2ac1f61f5045ab51319d3ad5698,
-    type: 2}
+  fowTexture: {fileID: 2800000, guid: dfa5f63634ba24c06a7c899467e4f9f3, type: 3}
+  playerPrefab: {fileID: 198602, guid: efd6ee8f75409427fb356619eb8a286c, type: 2}
   player: {fileID: 0}
+  distance: 3
   erodePercent: 0.5
   erodeIterations: 2
   treePercent: 0.3
@@ -180,6 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2006166434}
   - component: {fileID: 2006166433}
+  - component: {fileID: 2006166432}
   - component: {fileID: 2006166431}
   - component: {fileID: 2006166430}
   - component: {fileID: 2006166435}
@@ -199,6 +200,13 @@ AudioListener:
   m_GameObject: {fileID: 2006166429}
   m_Enabled: 1
 --- !u!124 &2006166431
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2006166429}
+  m_Enabled: 1
+--- !u!92 &2006166432
 Behaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}

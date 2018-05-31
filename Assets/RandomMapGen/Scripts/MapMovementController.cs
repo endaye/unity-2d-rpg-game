@@ -1,112 +1,96 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using NUnit.Framework.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 using System;
 
-public class MapMovementController : MonoBehaviour
-{
-    public Map map;
-    public Vector2 tileSize;
-    public int currentTile;
-    public float speed = 1f;
-    public bool moving;
-    public int[] blockedTileTypes;
-    public delegate void TileAction(int Type);
-    public TileAction tileActionCallback;
-    public delegate void MoveAction();
-    public MoveAction moveActionCallback;
+public class MapMovementController : MonoBehaviour {
 
-    private float moveTime;
-    private Vector2 startPos;
-    private Vector2 endPos;
-    private int tmpIndex;
-    private int tmpX;
-    private int tmpY;
+	public Map map;
+	public Vector2 tileSize;
+	public int currentTile;
+	public float speed = 1f;
+	public bool moving;
+	public int[] blockedTileTypes;
+	public delegate void TileAction(int Type);
+	public TileAction tileActionCallback;
+	public delegate void MoveAction();
+	public MoveAction moveActionCallback;
 
-    public void MoveTo(int index, bool animate = false)
-    {
-        if (!CanMove(index))
-        {
-            return;
-        }
+	private float moveTime;
+	private Vector2 startPos;
+	private Vector2 endPos;
+	private int tmpIndex;
+	private int tmpX;
+	private int tmpY;
 
-        if (moveActionCallback != null)
-        {
-            moveActionCallback();
-        }
+	public void MoveTo(int index, bool animate = false){
 
-        currentTile = index;
-        PosUtil.CalculatePos(index, map.columns, out tmpX, out tmpY);
+		if (!CanMove (index))
+			return;
 
-        tmpX *= (int)tileSize.x;
-        tmpY *= -(int)tileSize.y;
+		if (moveActionCallback != null)
+			moveActionCallback ();
 
-        var newPos = new Vector3(tmpX, tmpY, 0f);
-        if (!animate)
-        {
-            transform.position = newPos;
+		currentTile = index;
 
-            if (tileActionCallback != null)
-            {
-                tileActionCallback(map.tiles[currentTile].autotileID);
-            }
-        }
-        else
-        {
-            startPos = transform.position;
-            endPos = newPos;
-            moveTime = 0;
-            moving = true;
-        }
+		PosUtil.CalculatePos (index, map.columns, out tmpX, out tmpY);
 
-    }
+		tmpX *= (int)tileSize.x;
+		tmpY *= -(int)tileSize.y;
 
-    public void MoveInDirection(Vector2 dir)
-    {
-        PosUtil.CalculatePos(currentTile, map.columns, out tmpX, out tmpY);
-        tmpX += (int)dir.x;
-        tmpY += (int)dir.y;
+		var newPos = new Vector3 (tmpX, tmpY, 0);
+		if (!animate) {
+			transform.position = newPos;
 
-        PosUtil.CalculateIndex(tmpX, tmpY, map.columns, out tmpIndex);
+			if (tileActionCallback != null)
+				tileActionCallback (map.tiles [currentTile].autotileID);
 
-        MoveTo(tmpIndex, true);
-    }
+		} else {
+			startPos = transform.position;
+			endPos = newPos;
+			moveTime = 0;
+			moving = true;
+		}
+	}
 
-    void Update()
-    {
-        if (moving)
-        {
-            moveTime += Time.deltaTime;
-            if (moveTime > speed)
-            {
-                moving = false;
-                transform.position = endPos;
+	public void MoveInDirection(Vector2 dir){
+		PosUtil.CalculatePos (currentTile, map.columns, out tmpX, out tmpY);
 
-                if (tileActionCallback != null)
-                {
-                    tileActionCallback(map.tiles[currentTile].autotileID);
-                }
-            }
+		tmpX += (int)dir.x;
+		tmpY += (int)dir.y;
 
-            transform.position = Vector2.Lerp(startPos, endPos, moveTime / speed);
-        }
-    }
+		PosUtil.CalculateIndex (tmpX, tmpY, map.columns, out tmpIndex);
 
-    bool CanMove(int index)
-    {
-        if (index < 0 || index >= map.tiles.Length)
-        {
-            return false;
-        }
+		MoveTo (tmpIndex, true);
+	}
 
-        var tileType = map.tiles[index].autotileID;
+	void Update(){
 
-        if (moving || Array.IndexOf(blockedTileTypes, tileType) > -1)
-        {
-            return false;
-        }
+		if (moving) {
 
-        return true;
-    }
+			moveTime += Time.deltaTime;
+			if (moveTime > speed) {
+				moving = false;
+				transform.position = endPos;
+
+				if (tileActionCallback != null)
+					tileActionCallback (map.tiles [currentTile].autotileID);
+			}
+
+			transform.position = Vector2.Lerp (startPos, endPos, moveTime / speed);
+		}
+
+	}
+
+	bool CanMove(int index){
+
+		if (index < 0 || index >= map.tiles.Length)
+			return false;
+
+		var tileType = map.tiles [index].autotileID;
+
+		if (moving || Array.IndexOf(blockedTileTypes, tileType) > -1)
+			return false;
+
+		return true;
+	}
 }
