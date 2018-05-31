@@ -2026,7 +2026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de272be6524fa4a6aadf8eb4a61eefaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextWindow: 4
+  nextWindow: 5
   previousWindow: 0
   firstSelected: {fileID: 1892867207}
   continueButton: {fileID: 2137941655}
@@ -3626,43 +3626,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 862763710}
-  - component: {fileID: 862763709}
   m_Layer: 0
-  m_Name: RandomMapTester
+  m_Name: MapContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &862763709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 862763708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46182507d719d49a5bbb879f2480ae54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapWidth: 20
-  mapHeight: 20
-  mapContainer: {fileID: 862763708}
-  tilePrefab: {fileID: 130468, guid: b7e373b522b554b2b9c21b7229a91eee, type: 2}
-  tileSize: {x: 16, y: 16}
-  islandTexture: {fileID: 2800000, guid: 6dda2095192964815b349ac505a5e664, type: 3}
-  fowTexture: {fileID: 2800000, guid: dfa5f63634ba24c06a7c899467e4f9f3, type: 3}
-  playerPrefab: {fileID: 198602, guid: efd6ee8f75409427fb356619eb8a286c, type: 2}
-  player: {fileID: 0}
-  distance: 3
-  erodePercent: 0.5
-  erodeIterations: 2
-  treePercent: 0.3
-  hillPercent: 0.2
-  mountainsPercent: 0.1
-  townPercent: 0.05
-  monsterPercent: 0.1
-  lakePercent: 0.05
 --- !u!4 &862763710
 Transform:
   m_ObjectHideFlags: 0
@@ -5105,6 +5075,7 @@ MonoBehaviour:
   - {fileID: 1348808780}
   - {fileID: 1114986098}
   - {fileID: 123497901}
+  - {fileID: 2017350466}
   currentWindowID: 0
   defaultWindowID: 0
 --- !u!114 &1168272541
@@ -5153,7 +5124,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 2006166433}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -5178,6 +5149,7 @@ RectTransform:
   - {fileID: 1348808781}
   - {fileID: 1114986099}
   - {fileID: 123497902}
+  - {fileID: 2017350468}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7964,6 +7936,84 @@ RectTransform:
   m_PrefabParentObject: {fileID: 22473626, guid: 37bd0ea9c8b6a440ab8d028808012fa4,
     type: 2}
   m_PrefabInternal: {fileID: 2011909968}
+--- !u!1 &2017350465
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2017350468}
+  - component: {fileID: 2017350466}
+  - component: {fileID: 2017350467}
+  m_Layer: 5
+  m_Name: GameWindow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2017350466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2017350465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8fe11889e9beb46926c50286d856c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextWindow: 0
+  previousWindow: 0
+  firstSelected: {fileID: 0}
+--- !u!114 &2017350467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2017350465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46182507d719d49a5bbb879f2480ae54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapWidth: 20
+  mapHeight: 20
+  mapContainer: {fileID: 862763708}
+  tilePrefab: {fileID: 130468, guid: b7e373b522b554b2b9c21b7229a91eee, type: 2}
+  tileSize: {x: 16, y: 16}
+  islandTexture: {fileID: 2800000, guid: 6dda2095192964815b349ac505a5e664, type: 3}
+  fowTexture: {fileID: 2800000, guid: dfa5f63634ba24c06a7c899467e4f9f3, type: 3}
+  playerPrefab: {fileID: 198602, guid: efd6ee8f75409427fb356619eb8a286c, type: 2}
+  player: {fileID: 0}
+  distance: 3
+  erodePercent: 0.5
+  erodeIterations: 2
+  treePercent: 0.3
+  hillPercent: 0.2
+  mountainsPercent: 0.1
+  townPercent: 0.05
+  monsterPercent: 0.1
+  lakePercent: 0.05
+--- !u!224 &2017350468
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2017350465}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1168272544}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2034482115
 GameObject:
   m_ObjectHideFlags: 0
