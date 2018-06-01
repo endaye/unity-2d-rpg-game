@@ -8,10 +8,12 @@ public class BattleWindow : GenericWindow
     public Image[] decorations;
     public GameObject actionGroup;
     public Text monsterLabel;
+    public GenericBattleAction[] actions;
+    public bool nextActionPlayer = true;
+    [Range(0, .9f)] public float runOdds = .3f;
 
     private Actor player;
     private Actor monster;
-
     private System.Random rand = new System.Random();
 
     public override void Open()
@@ -35,11 +37,39 @@ public class BattleWindow : GenericWindow
         UpdateMonsterLabel();
     }
 
-    public void OnAction(int id)
+    public void OnAction(GenericBattleAction action, Actor target1, Actor target2)
     {
-        DisplayMessage("Action " + id + " Selected");
+        action.Action(target1, target2);
+
+        DisplayMessage(action.ToString());
         actionGroup.SetActive(false);
+
+        UpdatePlayerStats();
+        UpdateMonsterLabel();
+
         StartCoroutine(NextAction());
+    }
+
+    public void OnPlayerAction(int id)
+    {
+        switch (id)
+        {
+            case 1:
+                StartCoroutine(OnRun());
+                break;
+            default:
+                var action = actions[id];
+                OnAction(action, player, monster);
+                break;
+        }
+        nextActionPlayer = false;
+    }
+
+    public void OnMonsterAction()
+    {
+        var action = actions[0];
+        OnAction(action, monster, player);
+        nextActionPlayer = true;
     }
 
     void DisplayMessage(string text)
@@ -50,13 +80,42 @@ public class BattleWindow : GenericWindow
 
     IEnumerator NextAction()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2f);
+        if (nextActionPlayer)
+        {
+            actionGroup.SetActive(true);
+            OnFocus();
+        }
+        else
+        {
+            OnMonsterAction();
+        }
+    }
 
-        actionGroup.SetActive(true);
+    void UpdatePlayerStats()
+    {
+        ((StatsWindow)manager.GetWindow((int)Windows.StatsWindow - 1)).UpdateStats();
     }
 
     void UpdateMonsterLabel()
     {
         monsterLabel.text = monster.name + " HP " + monster.health.ToString("D2");
+    }
+
+    IEnumerator OnRun()
+    {
+        actionGroup.SetActive(false);
+        var change = Random.Range(0, 1f);
+        if (change < runOdds)
+        {
+            DisplayMessage("You were able to run away");
+            yield return new WaitForSeconds(2f);
+            Close();
+        }
+        else
+        {
+            DisplayMessage("You were not able to run away");
+            StartCoroutine(NextAction());
+        }
     }
 }

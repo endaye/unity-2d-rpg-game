@@ -1573,11 +1573,21 @@ RectTransform:
 GameObject:
   m_PrefabParentObject: {fileID: 169620, guid: 37bd0ea9c8b6a440ab8d028808012fa4, type: 2}
   m_PrefabInternal: {fileID: 324551327}
+--- !u!1 &324944255 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 169620, guid: 37bd0ea9c8b6a440ab8d028808012fa4, type: 2}
+  m_PrefabInternal: {fileID: 600254656}
 --- !u!224 &324944256 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22473626, guid: 37bd0ea9c8b6a440ab8d028808012fa4,
     type: 2}
   m_PrefabInternal: {fileID: 600254656}
+--- !u!114 &324944258 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11463840, guid: 37bd0ea9c8b6a440ab8d028808012fa4,
+    type: 2}
+  m_PrefabInternal: {fileID: 600254656}
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &346983257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1669,12 +1679,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextWindow: 0
   previousWindow: 0
-  firstSelected: {fileID: 0}
+  firstSelected: {fileID: 324944255}
   decorations:
   - {fileID: 1600881431}
   - {fileID: 533557511}
   actionGroup: {fileID: 2053233143}
   monsterLabel: {fileID: 458570367}
+  actions:
+  - {fileID: 11400000, guid: a637288bb7396184c883ea87e0444ef3, type: 2}
+  nextActionPlayer: 1
+  runOdds: 0.3
 --- !u!114 &346983262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1716,6 +1730,12 @@ RectTransform:
   m_PrefabParentObject: {fileID: 22473626, guid: 37bd0ea9c8b6a440ab8d028808012fa4,
     type: 2}
   m_PrefabInternal: {fileID: 1949529284}
+--- !u!114 &384417186 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11463840, guid: 37bd0ea9c8b6a440ab8d028808012fa4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1949529284}
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &428616595
 Prefab:
   m_ObjectHideFlags: 0
@@ -2778,12 +2798,16 @@ Prefab:
       objectReference: {fileID: 346983261}
     - target: {fileID: 11463840, guid: 37bd0ea9c8b6a440ab8d028808012fa4, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnAction
+      value: OnPlayerAction
       objectReference: {fileID: 0}
     - target: {fileID: 11463840, guid: 37bd0ea9c8b6a440ab8d028808012fa4, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 11463840, guid: 37bd0ea9c8b6a440ab8d028808012fa4, type: 2}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 384417186}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37bd0ea9c8b6a440ab8d028808012fa4, type: 2}
   m_IsPrefabParent: 0
@@ -9004,7 +9028,7 @@ Prefab:
       objectReference: {fileID: 346983261}
     - target: {fileID: 11463840, guid: 37bd0ea9c8b6a440ab8d028808012fa4, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnAction
+      value: OnPlayerAction
       objectReference: {fileID: 0}
     - target: {fileID: 11463840, guid: 37bd0ea9c8b6a440ab8d028808012fa4, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -9014,6 +9038,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11463840, guid: 37bd0ea9c8b6a440ab8d028808012fa4, type: 2}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 324944258}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37bd0ea9c8b6a440ab8d028808012fa4, type: 2}
   m_IsPrefabParent: 0
