@@ -49,6 +49,11 @@ public class RandomMapTester : MonoBehaviour
 	private Sprite[] islandTileSprites;
 	private Sprite[] fowTileSprites;
 
+	public WindowManager windowManager
+	{
+		get { return GenericWindow.manager; }
+	}
+
 	public void Reset()
 	{
 		islandTileSprites = Resources.LoadAll<Sprite>(islandTexture.name);
@@ -164,15 +169,15 @@ public class RandomMapTester : MonoBehaviour
 
 	void TileActionCallback(int type)
 	{
-
 		var tileID = player.GetComponent<MapMovementController>().currentTile;
 		VisitTile(tileID);
 
+		var messageWindow = windowManager.Open((int) Windows.MesssageWindow - 1, false) as MessageWindow;
+		messageWindow.text = "On tile type " + type;
 	}
 
 	void ClearMapContainer()
 	{
-
 		var children = mapContainer.transform.GetComponentsInChildren<Transform>();
 		for (var i = children.Length - 1; i > 0; i--)
 		{

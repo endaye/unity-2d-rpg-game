@@ -3729,6 +3729,7 @@ GameObject:
   - component: {fileID: 808842421}
   - component: {fileID: 808842420}
   - component: {fileID: 808842419}
+  - component: {fileID: 808842423}
   m_Layer: 5
   m_Name: MesssageWindow
   m_TagString: Untagged
@@ -3823,6 +3824,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808842417}
+--- !u!114 &808842423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 808842417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 326be8550619207418efd15752948411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextWindow: 0
+  previousWindow: 0
+  firstSelected: {fileID: 0}
+  closeDelay: 2
 --- !u!1 &862763708
 GameObject:
   m_ObjectHideFlags: 0
@@ -5281,6 +5297,7 @@ MonoBehaviour:
   - {fileID: 1114986098}
   - {fileID: 123497901}
   - {fileID: 2017350466}
+  - {fileID: 808842423}
   currentWindowID: 0
   defaultWindowID: 4
 --- !u!114 &1168272541
