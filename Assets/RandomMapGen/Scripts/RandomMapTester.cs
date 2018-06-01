@@ -48,6 +48,7 @@ public class RandomMapTester : MonoBehaviour
 	private int tmpY;
 	private Sprite[] islandTileSprites;
 	private Sprite[] fowTileSprites;
+	private BattleWindow battleWindow;
 
 	public WindowManager windowManager
 	{
@@ -172,7 +173,7 @@ public class RandomMapTester : MonoBehaviour
 		var tileID = player.GetComponent<MapMovementController>().currentTile;
 		VisitTile(tileID);
 
-		var messageWindow = windowManager.Open((int) Windows.MesssageWindow - 1, false) as MessageWindow;
+		var messageWindow = windowManager.Open((int)Windows.MesssageWindow - 1, false) as MessageWindow;
 		messageWindow.text = "On tile type " + type;
 	}
 
@@ -253,5 +254,24 @@ public class RandomMapTester : MonoBehaviour
 			}
 		}
 
+	}
+
+	public void StartBattle()
+	{
+		battleWindow = windowManager.Open((int)Windows.BattleWindow - 1, false) as BattleWindow;
+		battleWindow.StartBattle();
+		TogglePlayerMovement(false);
+	}
+
+	public void EndBattle()
+	{
+		battleWindow.Close();
+		TogglePlayerMovement(true);
+	}
+
+	private void TogglePlayerMovement(bool value)
+	{
+		player.GetComponent<MapMovementController>().enabled = value;
+		Camera.main.GetComponent<MoveCamera>().enabled = value;
 	}
 }

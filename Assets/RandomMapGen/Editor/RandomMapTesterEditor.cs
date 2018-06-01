@@ -22,11 +22,29 @@ public class RandomMapTesterEditor : Editor {
 			}
 		}
 
-		if (GUILayout.Button ("Reset")) {
-			if (Application.isPlaying) {
-				script.Reset ();
+		if (GUILayout.Button("Reset"))
+		{
+			if (Application.isPlaying)
+			{
+				script.Reset();
 			}
 		}
+
+		if (GUILayout.Button("Start Battle"))
+		{
+			if (Application.isPlaying)
+			{
+				script.StartBattle();
+			}
+		}
+
+		if(GUILayout.Button("End Battle")) {
+			if (Application.isPlaying)
+			{
+				script.EndBattle();
+			}
+		}
+
 
 	}
 

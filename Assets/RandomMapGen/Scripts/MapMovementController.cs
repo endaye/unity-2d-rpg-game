@@ -2,7 +2,8 @@
 using System.Collections;
 using System;
 
-public class MapMovementController : MonoBehaviour {
+public class MapMovementController : MonoBehaviour
+{
 
 	public Map map;
 	public Vector2 tileSize;
@@ -22,29 +23,33 @@ public class MapMovementController : MonoBehaviour {
 	private int tmpX;
 	private int tmpY;
 
-	public void MoveTo(int index, bool animate = false){
+	public void MoveTo(int index, bool animate = false)
+	{
 
-		if (!CanMove (index))
+		if (!CanMove(index))
 			return;
 
 		if (moveActionCallback != null)
-			moveActionCallback ();
+			moveActionCallback();
 
 		currentTile = index;
 
-		PosUtil.CalculatePos (index, map.columns, out tmpX, out tmpY);
+		PosUtil.CalculatePos(index, map.columns, out tmpX, out tmpY);
 
 		tmpX *= (int)tileSize.x;
 		tmpY *= -(int)tileSize.y;
 
-		var newPos = new Vector3 (tmpX, tmpY, 0);
-		if (!animate) {
+		var newPos = new Vector3(tmpX, tmpY, 0);
+		if (!animate)
+		{
 			transform.position = newPos;
 
 			if (tileActionCallback != null)
-				tileActionCallback (map.tiles [currentTile].autotileID);
+				tileActionCallback(map.tiles[currentTile].autotileID);
 
-		} else {
+		}
+		else
+		{
 			startPos = transform.position;
 			endPos = newPos;
 			moveTime = 0;
@@ -52,41 +57,45 @@ public class MapMovementController : MonoBehaviour {
 		}
 	}
 
-	public void MoveInDirection(Vector2 dir){
-		PosUtil.CalculatePos (currentTile, map.columns, out tmpX, out tmpY);
+	public void MoveInDirection(Vector2 dir)
+	{
+		PosUtil.CalculatePos(currentTile, map.columns, out tmpX, out tmpY);
 
 		tmpX += (int)dir.x;
 		tmpY += (int)dir.y;
 
-		PosUtil.CalculateIndex (tmpX, tmpY, map.columns, out tmpIndex);
+		PosUtil.CalculateIndex(tmpX, tmpY, map.columns, out tmpIndex);
 
-		MoveTo (tmpIndex, true);
+		MoveTo(tmpIndex, true);
 	}
 
-	void Update(){
+	void Update()
+	{
 
-		if (moving) {
+		if (moving)
+		{
 
 			moveTime += Time.deltaTime;
-			if (moveTime > speed) {
+			if (moveTime > speed)
+			{
 				moving = false;
 				transform.position = endPos;
 
 				if (tileActionCallback != null)
-					tileActionCallback (map.tiles [currentTile].autotileID);
+					tileActionCallback(map.tiles[currentTile].autotileID);
 			}
 
-			transform.position = Vector2.Lerp (startPos, endPos, moveTime / speed);
+			transform.position = Vector2.Lerp(startPos, endPos, moveTime / speed);
 		}
 
 	}
 
-	bool CanMove(int index){
-
-		if (index < 0 || index >= map.tiles.Length)
+	bool CanMove(int index)
+	{
+		if (index < 0 || index >= map.tiles.Length || !enabled)
 			return false;
 
-		var tileType = map.tiles [index].autotileID;
+		var tileType = map.tiles[index].autotileID;
 
 		if (moving || Array.IndexOf(blockedTileTypes, tileType) > -1)
 			return false;
