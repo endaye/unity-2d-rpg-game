@@ -7,6 +7,10 @@ public class BattleWindow : GenericWindow
 {
     public Image[] decorations;
     public GameObject actionGroup;
+    public Text monsterLabel;
+
+    private Actor player;
+    private Actor monster;
 
     private System.Random rand = new System.Random();
 
@@ -21,10 +25,14 @@ public class BattleWindow : GenericWindow
         actionGroup.SetActive(false);
     }
 
-    public void StartBattle()
+    public void StartBattle(Actor target1, Actor target2)
     {
-        DisplayMessage("A monster approaches!");
+        player = target1;
+        monster = target2;
+
+        DisplayMessage("A " + monster.name + " approaches!");
         StartCoroutine(NextAction());
+        UpdateMonsterLabel();
     }
 
     public void OnAction(int id)
@@ -45,5 +53,10 @@ public class BattleWindow : GenericWindow
         yield return new WaitForSeconds(2);
 
         actionGroup.SetActive(true);
+    }
+
+    void UpdateMonsterLabel()
+    {
+        monsterLabel.text = monster.name + " HP " + monster.health.ToString("D2");
     }
 }

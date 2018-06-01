@@ -25,6 +25,11 @@ public class RandomMapTester : MonoBehaviour
 	public int distance = 3;
 
 	[Space]
+	[Header("Actor Templates")]
+	public Actor playerTemplate;
+	public Actor monsterTemplate;
+
+	[Space]
 	[Header("Decorate Map")]
 	[Range(0, .9f)]
 	public float erodePercent = .5f;
@@ -49,6 +54,8 @@ public class RandomMapTester : MonoBehaviour
 	private Sprite[] islandTileSprites;
 	private Sprite[] fowTileSprites;
 	private BattleWindow battleWindow;
+	private StatsWindow statsWindow;
+	private Actor playerActor;
 
 	public WindowManager windowManager
 	{
@@ -166,6 +173,11 @@ public class RandomMapTester : MonoBehaviour
 
 		controller.MoveTo(map.castleTile.id);
 
+		playerActor = playerTemplate.Clone<Actor>();
+		playerActor.ResetHealth();
+		statsWindow = windowManager.Open((int)Windows.StatsWindow - 1, false) as StatsWindow;
+		statsWindow.target = playerActor;
+		statsWindow.UpdateStats();
 	}
 
 	void TileActionCallback(int type)
@@ -258,8 +270,11 @@ public class RandomMapTester : MonoBehaviour
 
 	public void StartBattle()
 	{
+		var monsterActor = monsterTemplate.Clone<Actor>();
+		monsterActor.ResetHealth();
+
 		battleWindow = windowManager.Open((int)Windows.BattleWindow - 1, false) as BattleWindow;
-		battleWindow.StartBattle();
+		battleWindow.StartBattle(playerActor, monsterActor);
 		TogglePlayerMovement(false);
 	}
 
