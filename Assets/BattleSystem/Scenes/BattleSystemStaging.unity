@@ -1601,6 +1601,7 @@ GameObject:
   - component: {fileID: 346983261}
   - component: {fileID: 346983263}
   - component: {fileID: 346983262}
+  - component: {fileID: 346983264}
   m_Layer: 5
   m_Name: BattleWindow
   m_TagString: Untagged
@@ -1689,6 +1690,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a637288bb7396184c883ea87e0444ef3, type: 2}
   nextActionPlayer: 1
   runOdds: 0.3
+  windowRect: {fileID: 346983258}
+  monsterRect: {fileID: 850131556}
 --- !u!114 &346983262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1725,6 +1728,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &346983264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 346983257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34917af105a80304aaae7cce585d1ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &384417184 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22473626, guid: 37bd0ea9c8b6a440ab8d028808012fa4,
@@ -5606,7 +5620,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22445384, guid: b2b14929607404ef9b57a4fb84104b64, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 22445384, guid: b2b14929607404ef9b57a4fb84104b64, type: 2}
       propertyPath: m_SizeDelta.x
@@ -5614,7 +5628,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22445384, guid: b2b14929607404ef9b57a4fb84104b64, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 22445384, guid: b2b14929607404ef9b57a4fb84104b64, type: 2}
       propertyPath: m_AnchorMin.x
@@ -5702,7 +5716,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22446844, guid: b61afd5adbd8747719ac44ab6efae7b1, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 22446844, guid: b61afd5adbd8747719ac44ab6efae7b1, type: 2}
       propertyPath: m_SizeDelta.x
@@ -7939,7 +7953,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22445384, guid: b2b14929607404ef9b57a4fb84104b64, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 22445384, guid: b2b14929607404ef9b57a4fb84104b64, type: 2}
       propertyPath: m_SizeDelta.x
@@ -7947,7 +7961,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22445384, guid: b2b14929607404ef9b57a4fb84104b64, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 22445384, guid: b2b14929607404ef9b57a4fb84104b64, type: 2}
       propertyPath: m_AnchorMin.x

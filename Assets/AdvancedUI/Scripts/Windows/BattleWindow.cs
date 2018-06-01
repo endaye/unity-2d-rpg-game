@@ -11,10 +11,19 @@ public class BattleWindow : GenericWindow
     public GenericBattleAction[] actions;
     public bool nextActionPlayer = true;
     [Range(0, .9f)] public float runOdds = .3f;
+    public RectTransform windowRect;
+    public RectTransform monsterRect;
 
+    private ShakeManager shakeManager;
     private Actor player;
     private Actor monster;
     private System.Random rand = new System.Random();
+
+    protected override void Awake()
+    {
+        shakeManager = GetComponent<ShakeManager>();
+        base.Awake();
+    }
 
     public override void Open()
     {
@@ -60,6 +69,7 @@ public class BattleWindow : GenericWindow
             default:
                 var action = actions[id];
                 OnAction(action, player, monster);
+                shakeManager.Shake(monsterRect, .5f, 1f);
                 break;
         }
         nextActionPlayer = false;
@@ -70,6 +80,7 @@ public class BattleWindow : GenericWindow
         var action = actions[0];
         OnAction(action, monster, player);
         nextActionPlayer = true;
+        shakeManager.Shake(windowRect, 1f, 2f);
     }
 
     void DisplayMessage(string text)
